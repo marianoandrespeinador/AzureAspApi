@@ -53,14 +53,5 @@ namespace AzureAspApi.Controllers
             }
         }
 
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-            using (var context = new MyFirstDBContext())
-            {
-                var contact = context.Set<ContactInfo>().FirstOrDefault(c => c.Id == id);     
-                context.Set<ContactInfo>().Remove(contact);
-            }
-        }
     }
 }
