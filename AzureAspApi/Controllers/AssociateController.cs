@@ -9,12 +9,16 @@ namespace AzureAspApi.Controllers
     public class AssociateController : ApiController
     {
         private AssociateModel CastAssociate(Associate associate)
-        => new AssociateModel
+            => new AssociateModel
             {
                 Id = associate.Id,
                 FirstMidName = associate.FirstMidName,
                 LastName = associate.LastName,
-                DefaultContactInfo = new ContactModel { Id = associate.ContactInfos.FirstOrDefault().Id, Value = associate.ContactInfos.FirstOrDefault().Value}
+                DefaultContactInfo = new ContactModel
+                {
+                    Id = associate.ContactInfos.FirstOrDefault().Id,
+                    Value = associate.ContactInfos.FirstOrDefault().Value
+                }
             };
 
         // GET api/values
