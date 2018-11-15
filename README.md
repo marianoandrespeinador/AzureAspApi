@@ -1,2 +1,2 @@
 # AzureAspApi
-My first Azure Dev-Ops attempt, its a Web API with Swagger connecting to a SQL DB.
+My first Azure Dev-Ops CI/CD configured project, its a Web API with Swagger connecting to a SQL DB through EF with Code First.
