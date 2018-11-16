@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
 using AzureAspApi.DAL;
@@ -14,16 +15,24 @@ namespace AzureAspApi.Controllers
                 Id = contact.Id,
                 Value = contact.Value
             };
+        private ContactWithAssociateModel CastContactInfoWithAssociate(ContactInfo contact)
+            => new ContactWithAssociateModel
+            {
+                Id = contact.Id,
+                Value = contact.Value,
+                AssociateName = $"{contact.Associate.FirstMidName} {contact.Associate.LastName}"
+            };
 
         // GET api/values
-        public IEnumerable<ContactModel> Get()
+        public IEnumerable<ContactWithAssociateModel> Get()
         {
-            List<ContactModel> contactList;
+            List<ContactWithAssociateModel> contactList;
 
             using (var context = new MyFirstDBContext())
             {
-                contactList = context.Set<ContactInfo>().ToList()
-                    .ConvertAll(CastContactInfo);
+                contactList = context.Set<ContactInfo>()
+                    .Include(ci => ci.Associate).ToList()
+                    .ConvertAll(CastContactInfoWithAssociate);
             }
 
             return contactList;

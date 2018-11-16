@@ -198,6 +198,7 @@
     <Compile Include="Models\AssociateModel.cs" />
     <Compile Include="Models\ContactInfo.cs" />
     <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\ContactWithAssociateModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
